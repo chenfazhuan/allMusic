@@ -26,7 +26,7 @@
   #app{
     width: px2rem(750);
     margin: 0 auto;
-    background:#fff;
+    background:#FCFCFD;
     height: 100%;
   }
 
