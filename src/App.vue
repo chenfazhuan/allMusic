@@ -1,8 +1,11 @@
 <template>
   <div id="app">
+
     <myHeader></myHeader>
 
-    <router-view></router-view>
+
+    <router-view choose="choose"></router-view>
+
 
     <myFooter></myFooter>
   </div>
@@ -16,6 +19,11 @@
     components: {
       myHeader,
       myFooter
+    },
+    method:{
+      choose(data){
+        console.log(data)
+      }
     }
   }
 </script>

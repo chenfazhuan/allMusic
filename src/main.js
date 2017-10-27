@@ -5,9 +5,16 @@ import App from './App'
 import router from './router'
 import Mint from 'mint-ui'
 import '../src/common/js/hotcss'
+import VueLazyload from 'vue-lazyload'
 
 import 'mint-ui/lib/style.css'
 Vue.use(Mint)
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: require('./common/image/loading.gif'),
+  loading: require('./common/image/loading.gif'),
+  attempt: 1
+});
 
 Vue.config.productionTip = false
 const FastClick = require('fastclick')

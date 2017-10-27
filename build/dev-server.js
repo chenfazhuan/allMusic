@@ -1,6 +1,10 @@
 'use strict'
 require('./check-versions')()
 
+var axios = require('axios')
+var qs = require('querystring')
+
+
 const config = require('../config')
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
@@ -13,12 +17,10 @@ const webpack = require('webpack')
 const proxyMiddleware = require('http-proxy-middleware')
 const webpackConfig = require('./webpack.dev.conf')
 
-// default port where dev server listens for incoming traffic
 const port = process.env.PORT || config.dev.port
-// automatically open browser, if not set will be false
+
 const autoOpenBrowser = !!config.dev.autoOpenBrowser
-// Define HTTP proxies to your custom API backend
-// https://github.com/chimurai/http-proxy-middleware
+
 const proxyTable = config.dev.proxyTable
 
 const app = express()
@@ -33,36 +35,22 @@ const hotMiddleware = require('webpack-hot-middleware')(compiler, {
   log: false,
   heartbeat: 2000
 })
-// force page reload when html-webpack-plugin template changes
-// currently disabled until this is resolved:
-// https://github.com/jantimon/html-webpack-plugin/issues/680
-// compiler.plugin('compilation', function (compilation) {
-//   compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
-//     hotMiddleware.publish({ action: 'reload' })
-//     cb()
-//   })
-// })
 
-// enable hot-reload and state-preserving
-// compilation error display
 app.use(hotMiddleware)
 
-// proxy api requests
 Object.keys(proxyTable).forEach(function (context) {
   let options = proxyTable[context]
   if (typeof options === 'string') {
-    options = { target: options }
+    options = {target: options}
   }
   app.use(proxyMiddleware(options.filter || context, options))
 })
 
-// handle fallback for HTML5 history API
+
 app.use(require('connect-history-api-fallback')())
 
-// serve webpack bundle output
 app.use(devMiddleware)
 
-// serve pure static assets
 const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
@@ -94,6 +82,183 @@ devMiddleware.waitUntilValid(() => {
     }
     server = app.listen(port)
     _resolve()
+  })
+})
+
+//在node服务器上进行请求
+app.post('/getQQ_Carousel', (req, res) => {
+  req.on('data', (buf) => {
+    let obj = qs.parse(buf.toString());
+    let url = obj.url;
+    axios.get(url, {
+      headers: {
+        referer: 'https://m.y.qq.com',
+      },
+      params: {
+        g_tk: 5381,
+        uin: 0,
+        format: 'json',
+        inCharset: 'utf-8',
+        outCharset: 'utf-8',
+        notice: 0,
+        platform: 'h5',
+        needNewCode: 1,
+        _: obj.time
+      }
+    }).then((resopnse) => {
+      res.json(resopnse.data)
+    })
+  })
+})
+app.post('/getXiami_Carousel', (req, res) => {
+  req.on('data', (buf) => {
+    let obj = qs.parse(buf.toString());
+    let url = obj.url;
+    axios.get(url).then((resopnse) => {
+      res.json(resopnse.data)
+    })
+  })
+})
+
+app.post('/getKg_Carousel', (req, res) => {
+  req.on('data', (buf) => {
+    let obj = qs.parse(buf.toString());
+    let url = obj.url;
+    axios.get(url).then((resopnse) => {
+      res.json(resopnse.data)
+    })
+  })
+})
+
+app.post('/getQQ_Songsheet', (req, res) => {
+  req.on('data', (buf) => {
+    let obj = qs.parse(buf.toString());
+    let url = obj.url;
+    axios.get(url, {
+      headers: {
+        referer: 'https://m.y.qq.com',
+      },
+      params: {
+        rnd: 0.4781484879517406,
+        g_tk: 732560869,
+        jsonpCallback: 'MusicJsonCallback',
+        loginUin: 0,
+        hostUin: 0,
+        format: 'jsonp',
+        inCharset: 'utf8',
+        outCharset: 'utf-8',
+        notice: 0,
+        platform: 'yqq',
+        needNewCode: 0,
+        categoryId: 10000000,
+        sortId: 5,
+        sin: 0,
+        ein: 5
+      }
+    }).then((resopnse) => {
+      res.json(resopnse.data)
+    })
+  })
+})
+
+app.post('/getNe_Songsheet', (req, res) => {
+  req.on('data', (buf) => {
+    let obj = qs.parse(buf.toString());
+    let url = obj.url;
+    axios.get(url).then((resopnse) => {
+      res.json(resopnse.data)
+    })
+
+  })
+})
+
+app.post('/getXiami_Songsheet', (req, res) => {
+  req.on('data', (buf) => {
+    let obj = qs.parse(buf.toString());
+    let url = obj.url;
+    axios.get(url).then((resopnse) => {
+      res.json(resopnse.data)
+    })
+
+  })
+})
+
+app.post('/getKg_Songsheet', (req, res) => {
+  req.on('data', (buf) => {
+    let obj = qs.parse(buf.toString());
+    let url = obj.url+"?page="+obj.page+"&json=true";
+    axios.get(url).then((resopnse) => {
+      res.json(resopnse.data)
+    })
+  })
+})
+
+app.post('/getXiami_Newmusic', (req, res) => {
+  req.on('data', (buf) => {
+    let obj = qs.parse(buf.toString());
+    let url = obj.url;
+    axios.get(url, {
+      headers: {
+        referer: 'http://m.xiami.com/',
+      },
+      params: {
+        c: 103,
+        type: 0,
+        page: 1,
+        limit: 100,
+        _: obj.time
+      }
+    }).then((resopnse) => {
+      res.json(resopnse.data)
+    })
+  })
+})
+
+app.post('/getKg_Newmusic', (req, res) => {
+  req.on('data', (buf) => {
+    let obj = qs.parse(buf.toString());
+    let url = obj.url+"?page="+obj.page+"&json=true";
+    axios.get(url).then((resopnse) => {
+      res.json(resopnse.data)
+    })
+  })
+})
+
+app.post('/getNe_Newmusic', (req, res) => {
+  req.on('data', (buf) => {
+    let obj = qs.parse(buf.toString());
+    let url = obj.url;
+    axios.get(url).then((resopnse) => {
+      res.json(resopnse.data)
+    })
+  })
+})
+app.post('/getQQ_Newmusic', (req, res) => {
+  req.on('data', (buf) => {
+    let obj = qs.parse(buf.toString());
+    let url = obj.url;
+    axios.get(url,{
+      headers:{
+        referer:'http://y.qq.com/'
+      },
+      params:{
+        g_tk: 5381,
+        uin: 0,
+        format: 'json',
+        inCharset: 'utf-8',
+        outCharset: 'utf-8',
+        notice: 0,
+        platform: 'h5',
+        needNewCode: 1,
+        tpl:3,
+        page:'detail',
+        type:'top',
+        topid:27,
+        _: obj.time
+      }
+    }).then((resopnse) => {
+      res.json(resopnse.data)
+    })
   })
 })
 

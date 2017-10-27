@@ -4,14 +4,27 @@
     <transition name="fade">
       <div class="top" v-show="show">
         <i class="iconfont icon-shezhi"></i>
-        <i class="iconfont icon-m"></i>
+        <i class="iconfont icon-m" @click="showchoose"></i>
         <i class="iconfont icon-character-avatar"></i>
+        <div class="choose" v-show="show_choose">
+          <div style="display: flex;flex-direction: column">
+            <div class="triangle-up"></div>
+          </div>
+          <div class="choose_way">
+
+              <img src="../assets/qq_logo.svg" @click="choose('qq')" alt="">
+              <img src="../assets/wy_logo.jpg" @click="choose('ne')" alt="">
+              <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1137283699,4138679640&fm=58&bpow=270&bpoh=270&u_exp_0=950304595,3821912507&fm_exp_0=86" @click="choose('xiami')" alt="">
+              <img src="../assets/logo_kugou.png" @click="choose('kg')" alt="">
+
+          </div>
+        </div>
       </div>
     </transition>
 
 
     <div class="search">
-      <input type="text" @click="find" :class="click_input ? 'bg_input':''">
+      <input type="text" @click="find" :class="click_input ? 'bg_input':''" v-model="s_write">
       <div class="search-font" :class="click_input ? 'font_show':'font_close'" @click="goback">
         <i class="iconfont icon-mendian"></i>
       </div>
@@ -31,18 +44,26 @@
       return {
         show: true,
         click_input: false,
-        show_s: true
+        show_s: true,
+        s_write: "",
+        show_choose:false
       }
     },
     methods: {
-      goback(){
+      goback() {
         this.show = true;
         this.show_s = true;
         this.click_input = false;
+        this.s_write = '';
+      },
+      choose(code){
+        this.$emit('choose',code);
+      },
+      showchoose(){
+        this.show_choose=!this.show_choose
       },
       handleScroll() {
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-        console.log(scrollTop)
         if (scrollTop > 280) {
           this.show = false
         } else {
@@ -66,8 +87,36 @@
   @import "../common/font/iconfont.css";
 
   $designWidth: 750;
+  .triangle-up {
+    align-self: center;
+    width: 0;
+    height: 0;
+    border-left: px2rem(30) solid transparent;
+    border-right: px2rem(30) solid transparent;
+    border-bottom: px2rem(30) solid #fff;
+  }
+
   .font_close {
     display: none !important;
+  }
+
+  .choose_way {
+    display: flex;
+    background: #fff;
+    border-radius: px2rem(10);
+    img {
+      width: px2rem(100);
+      height: px2rem(100);
+      padding: px2rem(20);
+    }
+  }
+
+  .choose {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: px2rem(50);
+    z-index: 900;
   }
 
   .font_show {
@@ -107,6 +156,7 @@
     padding-bottom: 0.4rem;
     width: 100%;
     display: flex;
+    position: relative;
   }
 
   .search {
