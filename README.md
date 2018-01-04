@@ -24,9 +24,7 @@ $ npm run dev
 ```
 
 # 首页:可以选择播放源
-![](https://github.com/chenfazhuan/allMusic/blob/master/img/img1.png)
-
-![](https://github.com/chenfazhuan/allMusic/blob/master/img/img2.png)
+![](https://github.com/chenfazhuan/allMusic/blob/master/img/img1.png)(https://github.com/chenfazhuan/allMusic/blob/master/img/img2.png)
 
 # 歌手详情页
 ![](https://github.com/chenfazhuan/allMusic/blob/master/img/img3.png)
