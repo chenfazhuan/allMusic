@@ -23,6 +23,7 @@ $ npm run build
 $ npm run dev
 ```
 
+
 ### 首页:可以选择播放源
 ![](https://github.com/chenfazhuan/allMusic/blob/master/img/img1.png)
 
