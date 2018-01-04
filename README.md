@@ -23,13 +23,25 @@ $ npm run build
 $ npm run dev
 ```
 
+首页:可以选择播放源
+![](https://github.com/chenfazhuan/allMusic/blob/master/img/img1.png)
 
-![](https://github.com/chenfazhuan/allMusic/blob/master/img/pic1.png)
-![](https://github.com/chenfazhuan/allMusic/blob/master/img/pic2.png)
-![](https://github.com/chenfazhuan/allMusic/blob/master/img/pic3.png)
-![](https://github.com/chenfazhuan/allMusic/blob/master/img/pic4.png)
-![](https://github.com/chenfazhuan/allMusic/blob/master/img/pic5.png)
-![](https://github.com/chenfazhuan/allMusic/blob/master/img/pic6.png)
-![](https://github.com/chenfazhuan/allMusic/blob/master/img/pic7.png)
+![](https://github.com/chenfazhuan/allMusic/blob/master/img/img2.png)
+
+歌手详情页
+![](https://github.com/chenfazhuan/allMusic/blob/master/img/img3.png)
+
+搜索页面
+![](https://github.com/chenfazhuan/allMusic/blob/master/img/img4.png)
+
+歌单列表页面
+![](https://github.com/chenfazhuan/allMusic/blob/master/img/img7.png)
+
+歌单页面
+![](https://github.com/chenfazhuan/allMusic/blob/master/img/img5.png)
+
+热门歌曲页面
+![](https://github.com/chenfazhuan/allMusic/blob/master/img/img6.png)
+
 
 
