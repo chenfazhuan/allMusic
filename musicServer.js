@@ -1,89 +1,9 @@
-'use strict'
-require('./check-versions')()
-
+var express = require('express')
 var axios = require('axios')
 var qs = require('querystring')
-
-
-const config = require('../config')
-if (!process.env.NODE_ENV) {
-  process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
-}
-
-const opn = require('opn')
-const path = require('path')
-const express = require('express')
-const webpack = require('webpack')
-const proxyMiddleware = require('http-proxy-middleware')
-const webpackConfig = require('./webpack.dev.conf')
-
-const port = process.env.PORT || config.dev.port
-
-const autoOpenBrowser = !!config.dev.autoOpenBrowser
-
-const proxyTable = config.dev.proxyTable
-
-const app = express()
-const compiler = webpack(webpackConfig)
-
-const devMiddleware = require('webpack-dev-middleware')(compiler, {
-  publicPath: webpackConfig.output.publicPath,
-  quiet: true
-})
-
-const hotMiddleware = require('webpack-hot-middleware')(compiler, {
-  log: false,
-  heartbeat: 2000
-})
-
-app.use(hotMiddleware)
-
-Object.keys(proxyTable).forEach(function (context) {
-  let options = proxyTable[context]
-  if (typeof options === 'string') {
-    options = {target: options}
-  }
-  app.use(proxyMiddleware(options.filter || context, options))
-})
-
-
-app.use(require('connect-history-api-fallback')())
-
-app.use(devMiddleware)
-
-const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
-app.use(staticPath, express.static('./static'))
-
-const uri = 'http://localhost:' + port
-
-var _resolve
-var _reject
-var readyPromise = new Promise((resolve, reject) => {
-  _resolve = resolve
-  _reject = reject
-})
-
-var server
-var portfinder = require('portfinder')
-portfinder.basePort = port
-
-console.log('> Starting dev server...')
-devMiddleware.waitUntilValid(() => {
-  portfinder.getPort((err, port) => {
-    if (err) {
-      _reject(err)
-    }
-    process.env.PORT = port
-    var uri = 'http://localhost:' + port
-    console.log('> Listening at ' + uri + '\n')
-    // when env is testing, don't need open it
-    if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
-      opn(uri)
-    }
-    server = app.listen(port)
-    _resolve()
-  })
-})
+var port = 80
+var app = express()
+var apiRouters = express.Router()
 
 //在node服务器上进行请求
 app.post('/getQQ_Carousel', (req, res) => {
@@ -353,7 +273,7 @@ app.post('/getNe_SheetDetail', (req, res) => {
         'Origin': 'http://music.163.com',
       }
     });
-    $axios.post(obj.url,qs.stringify({params:obj.params,encSecKey:obj.encSecKey})).then((response) => {
+    $axios.post(obj.url, qs.stringify({params: obj.params, encSecKey: obj.encSecKey})).then((response) => {
       res.json(response.data)
     })
   })
@@ -650,9 +570,12 @@ app.post('/getQQ_song', (req, res) => {
   })
 })
 
-module.exports = {
-  ready: readyPromise,
-  close: () => {
-    server.close()
+app.use('/api', apiRouters)
+app.use(express.static('./dist'))
+module.exports = app.listen(port, function (err) {
+  if (err) {
+    console.log(err)
+    return
   }
-}
+
+})

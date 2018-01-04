@@ -1,0 +1,13 @@
+export const SET_way = 'SET_way'
+export const SET_h_bg = 'SET_h_bg'
+export const SET_in_bg = 'SET_in_bg'
+export const SET_sequenceList = 'SET_sequenceList'
+export const SET_playlist = 'SET_playlist'
+export const SET_playing = 'SET_playing'
+export const SET_fullScreen = 'SET_fullScreen'
+export const SET_mode = 'SET_mode'
+export const SET_currentIndex = 'SET_currentIndex'
+export const SET_skrollr = 'SET_skrollr'
+export const SET_showlist = 'SET_showlist'
+export const SET_currentS = 'SET_currentS'
+

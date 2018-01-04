@@ -5,16 +5,12 @@ import App from './App'
 import router from './router'
 import Mint from 'mint-ui'
 import '../src/common/js/hotcss'
-import VueLazyload from 'vue-lazyload'
-
+import store from './store'
 import 'mint-ui/lib/style.css'
+import 'vue2-animate/dist/vue2-animate.min.css';
+
 Vue.use(Mint)
-Vue.use(VueLazyload, {
-  preLoad: 1.3,
-  error: require('./common/image/loading.gif'),
-  loading: require('./common/image/loading.gif'),
-  attempt: 1
-});
+// Vue.component(Range.name, Range);
 
 Vue.config.productionTip = false
 const FastClick = require('fastclick')
@@ -24,5 +20,6 @@ FastClick.attach(document.body)
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

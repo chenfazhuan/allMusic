@@ -47,7 +47,7 @@ let qq_vkey = 'https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg'
 let time = new Date();
 
 export function getQQ_Carousel(post, time) {
-  let url = '/getQQ_Carousel';
+  let url = 'http://www.chenfazhuan.xin/getQQ_Carousel';
   let data = "time=" + time + "&url=" + qq_Carousel;
   return axios.post(url, data)
     .then((res) => {
@@ -56,7 +56,7 @@ export function getQQ_Carousel(post, time) {
 }
 
 export function getXiami_Carousel() {
-  let url = '/getXiami_Carousel';
+  let url = 'http://www.chenfazhuan.xin/getXiami_Carousel';
   let data = "url=" + xiami_Carousel;
   return axios.post(url, data)
     .then((res) => {
@@ -65,7 +65,7 @@ export function getXiami_Carousel() {
 }
 
 export function getKg_Carousel() {
-  let url = '/getKg_Carousel';
+  let url = 'http://www.chenfazhuan.xin/getKg_Carousel';
   let data = "url=" + kg_Carousel;
   return axios.post(url, data)
     .then((res) => {
@@ -74,7 +74,7 @@ export function getKg_Carousel() {
 }
 
 export function getNe_Carousel() {
-  let url = '/getNe_Carousel';
+  let url = 'http://www.chenfazhuan.xin/getNe_Carousel';
   let data = "url=" + ne_Carousel;
   return axios.post(url, data)
     .then((res) => {
@@ -84,7 +84,7 @@ export function getNe_Carousel() {
 
 //获取推荐歌单
 export function getQQ_Songsheet(post, ein) {
-  let url = '/getQQ_Songsheet';
+  let url = 'http://www.chenfazhuan.xin/getQQ_Songsheet';
   let data = "url=" + qq_Songsheet + "&sin=" + post + '&ein=' + ein;
   return axios.post(url, data)
     .then((res) => {
@@ -93,7 +93,7 @@ export function getQQ_Songsheet(post, ein) {
 }
 
 export function getNe_Songsheet(post) {
-  let url = '/getNe_Songsheet';
+  let url = 'http://www.chenfazhuan.xin/getNe_Songsheet';
   let data = "url=" + ne_Songsheet + '&limit=35&offset=' + post;
   return axios.post(url, data)
     .then((res) => {
@@ -102,7 +102,7 @@ export function getNe_Songsheet(post) {
 }
 
 export function getKg_Songsheet(post, page) {
-  let url = '/getKg_Songsheet';
+  let url = 'http://www.chenfazhuan.xin/getKg_Songsheet';
   let data = "url=" + kg_Songsheet + "?page=" + page;
   return axios.post(url, data)
     .then((res) => {
@@ -111,7 +111,7 @@ export function getKg_Songsheet(post, page) {
 }
 
 export function getXiami_Songsheet(post) {
-  let url = '/getXiami_Songsheet';
+  let url = 'http://www.chenfazhuan.xin/getXiami_Songsheet';
   let data = "url=" + xiami_Songsheet + post;
   return axios.post(url, data)
     .then((res) => {
@@ -121,7 +121,7 @@ export function getXiami_Songsheet(post) {
 
 //获取最新音乐
 export function getXiami_Newmusic(post, time) {
-  let url = '/getXiami_Newmusic';
+  let url = 'http://www.chenfazhuan.xin/getXiami_Newmusic';
   let data = "url=" + Xiami_Newmusic + "&time=" + time;
   return axios.post(url, data)
     .then((res) => {
@@ -130,7 +130,7 @@ export function getXiami_Newmusic(post, time) {
 }
 
 export function getKg_Newmusic(post, page) {
-  let url = '/getKg_Newmusic';
+  let url = 'http://www.chenfazhuan.xin/getKg_Newmusic';
   let data = "url=" + Kg_Newmusic + "&page=" + page;
   return axios.post(url, data)
     .then((res) => {
@@ -139,7 +139,7 @@ export function getKg_Newmusic(post, page) {
 }
 
 export function getNe_Newmusic(post) {
-  let url = '/getNe_Newmusic';
+  let url = 'http://www.chenfazhuan.xin/getNe_Newmusic';
   let data = "url=" + Ne_Newmusic;
   return axios.post(url, data)
     .then((res) => {
@@ -148,7 +148,7 @@ export function getNe_Newmusic(post) {
 }
 
 export function getQQ_Newmusic(post, time) {
-  let url = '/getQQ_Newmusic';
+  let url = 'http://www.chenfazhuan.xin/getQQ_Newmusic';
   let data = "url=" + QQ_Newmusic + '&time=' + time;
   return axios.post(url, data)
     .then((res) => {
@@ -158,7 +158,7 @@ export function getQQ_Newmusic(post, time) {
 
 //获取热门搜索
 export function getKg_Hotsearch() {
-  let url = '/getKg_Hotsearch';
+  let url = 'http://www.chenfazhuan.xin/getKg_Hotsearch';
   let data = 'url=' + kg_hotsearch;
   return axios.post(url, data).then((res) => {
     return Promise.resolve(res.data)
@@ -166,7 +166,7 @@ export function getKg_Hotsearch() {
 }
 
 export function getQQ_Hotsearch() {
-  let url = '/getQQ_Hotsearch';
+  let url = 'http://www.chenfazhuan.xin/getQQ_Hotsearch';
 
   let data = 'url=' + qq_hotsearch + '&time=' + time;
   return axios.post(url, data).then((res) => {
@@ -176,7 +176,7 @@ export function getQQ_Hotsearch() {
 
 //获取排行榜
 export function getQQ_Rank() {
-  let url = '/getQQ_Rank';
+  let url = 'http://www.chenfazhuan.xin/getQQ_Rank';
   let data = 'url=' + qq_rank + '&time=' + time;
   return axios.post(url, data).then((res) => {
     return Promise.resolve(res.data)
@@ -192,7 +192,7 @@ export function getNe_SheetDetail(id) {
 
   let p4 = '0CoJUm6Qyw8W8jud'
   let d1 = d(p, p2, p3, p4)
-  let url = '/getNe_SheetDetail';
+  let url = 'http://www.chenfazhuan.xin/getNe_SheetDetail';
   let data = `{"url":"${ne_sheetDetail}","params":"${d1.encText}","encSecKey":"${d1.encSecKey}"}`
   return axios.post(url, data).then((res) => {
     return Promise.resolve(res.data)
@@ -200,7 +200,7 @@ export function getNe_SheetDetail(id) {
 }
 
 export function getQQ_SheetDetail(id) {
-  let url = '/getQQ_SheetDetail';
+  let url = 'http://www.chenfazhuan.xin/getQQ_SheetDetail';
   let data = 'url=' + qq_sheetDetail + '&id=' + id;
   return axios.post(url, data).then((res) => {
     return Promise.resolve(res.data)
@@ -208,7 +208,7 @@ export function getQQ_SheetDetail(id) {
 }
 
 export function getXiami_SheetDetail(id) {
-  let url = '/getXiami_SheetDetail';
+  let url = 'http://www.chenfazhuan.xin/getXiami_SheetDetail';
   let data = 'url=' + xiami_sheetDetail + '&id=' + id;
   return axios.post(url, data).then((res) => {
     return Promise.resolve(res.data)
@@ -216,7 +216,7 @@ export function getXiami_SheetDetail(id) {
 }
 
 export function getKg_SheetDetail(id) {
-  let url = '/getKg_SheetDetail';
+  let url = 'http://www.chenfazhuan.xin/getKg_SheetDetail';
   let data = 'url=' + kg_sheetDetail + id;
   return axios.post(url, data).then((res) => {
     return Promise.resolve(res.data)
@@ -226,14 +226,14 @@ export function getKg_SheetDetail(id) {
 //获取酷狗播放
 export function getkg_music(id) {
   let data = 'url=' + kg_music + '&hash=' + id
-  return axios.post('/getkg_music', data).then((res) => {
+  return axios.post('http://www.chenfazhuan.xin/getkg_music', data).then((res) => {
     return Promise.resolve(res.data)
   })
 }
 
 //获取搜索
 export function getQQ_search(page, word) {
-  let url = '/getQQ_search'
+  let url = 'http://www.chenfazhuan.xin/getQQ_search'
   let data = 'url=' + qq_search + '&page=' + page + '&word=' + word + '&time=' + time
   return axios.post(url, data).then((data) => {
     return Promise.resolve(data.data)
@@ -241,7 +241,7 @@ export function getQQ_search(page, word) {
 }
 
 export function getNe_search(page, word) {
-  let url = '/getNe_search'
+  let url = 'http://www.chenfazhuan.xin/getNe_search'
   let data = 'url=' + ne_search + '&page=' + page + '&word=' + word
   return axios.post(url, data).then((data) => {
     return Promise.resolve(data.data)
@@ -249,7 +249,7 @@ export function getNe_search(page, word) {
 }
 
 export function getXiami_search(page, word) {
-  let url = '/getXiami_search'
+  let url = 'http://www.chenfazhuan.xin/getXiami_search'
   let data = 'url=' + xiami_search + '&page=' + page + '&word=' + word
   return axios.post(url, data).then((data) => {
     return Promise.resolve(data.data)
@@ -257,7 +257,7 @@ export function getXiami_search(page, word) {
 }
 
 export function getKg_search(page, word) {
-  let url = '/getKg_search'
+  let url = 'http://www.chenfazhuan.xin/getKg_search'
   let data = 'url=' + kg_search + '&page=' + page + '&word=' + word
   return axios.post(url, data).then((data) => {
     return Promise.resolve(data.data)
@@ -267,7 +267,7 @@ export function getKg_search(page, word) {
 //获取歌手列表
 export function getQQ_singerlist(num) {
   let data = 'url=' + qq_singerlist + '&num=' + num
-  return axios.post('/getQQ_singerlist', data)
+  return axios.post('http://www.chenfazhuan.xin/getQQ_singerlist', data)
     .then((data) => {
       return Promise.resolve(data.data)
     })
@@ -276,7 +276,7 @@ export function getQQ_singerlist(num) {
 //获取歌手详情
 export function getQQ_singer(num, id) {
   let data = 'url=' + qq_singer + '&num=' + num + '&id=' + id
-  return axios.post('/getQQ_singer', data)
+  return axios.post('http://www.chenfazhuan.xin/getQQ_singer', data)
     .then((data) => {
       return Promise.resolve(data.data)
     })
@@ -285,7 +285,7 @@ export function getQQ_singer(num, id) {
 // 获取qq播放地址
 export function getQQ_song(id) {
   let data = 'url=' + qq_vkey + '&id=' + id
-  return axios.post('/getQQ_song', data)
+  return axios.post('http://www.chenfazhuan.xin/getQQ_song', data)
     .then((data) => {
       return Promise.resolve(data.data)
     })
